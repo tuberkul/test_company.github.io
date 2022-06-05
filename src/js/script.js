@@ -80,13 +80,70 @@ if (window.screen.width <= 415) {
     });
 
     document.querySelector(".filter-text-mobile").addEventListener('click', () => {
-        document.querySelector(".filter").style.display = 'block';
-        document.querySelector(".filter").style.overflow = 'scroll';
         document.querySelector("body").style.overflow = 'hidden';
         document.querySelector("body").style.position = 'fixed';
-        console.log(document.querySelector("body").style.position = 'fixed');
-        console.log(document.querySelector("body").style.overflow = 'hidden');
+        document.querySelector(".filter").style.display = "block";
+        document.querySelector(".filter").style.overflow = 'scroll';
+        document.querySelector(".filter-footer").style.display = 'flex';
     });
+
+    document.querySelector(".btn-more-info-footer").addEventListener('click', () => {
+        document.querySelector("body").style.overflow = '';
+        document.querySelector("body").style.position = '';
+        document.querySelector(".filter").style.display = "none";
+        document.querySelector(".filter").style.overflow = '';
+        document.querySelector(".filter-footer").style.display = 'none';
+    });
+
+    document.querySelector(".btn-delete-changes").addEventListener('click', () => {
+        document.querySelector("body").style.overflow = '';
+        document.querySelector("body").style.position = '';
+        document.querySelector(".filter").style.display = "none";
+        document.querySelector(".filter").style.overflow = '';
+        document.querySelector(".filter-footer").style.display = 'none';
+    });
+
+    window.onload = function(){
+        slideOne();
+        slideTwo();
+        
+        displayValOne.style.position = "absolute";
+        displayValTwo.style.position = "absolute";
+        displayValOne.style.left = `${-40}px`;
+        sliderTwo.style.left = `${40}px`
+    }
+    
+    var startPosOne = 0;
+    
+    let sliderOne = document.getElementById("slider-1");
+    let sliderTwo = document.getElementById("slider-2");
+    let displayValOne = document.getElementById("range1");
+    let displayValTwo = document.getElementById("range2");
+    let minGap = 0;
+    let sliderTrack = document.querySelector(".slider-track");
+    let sliderMaxValue = document.getElementById("slider-1").max;
+    
+    function slideOne(){
+        if(parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap){
+            sliderOne.value = parseInt(sliderTwo.value) - minGap;
+        }
+        displayValOne.innerHTML = `${sliderOne.value}₽`;
+        fillColor();
+        displayValOne.style.left = `${sliderOne.value/1000 - 40}px`
+    }
+    function slideTwo(){
+        if(parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap){
+            sliderTwo.value = parseInt(sliderOne.value) + minGap;
+        }
+        displayValTwo.innerHTML = `23 000₽`;
+        fillColor();
+        displayValTwo.style.left= `${sliderTwo.value/1000 * 4.9}px`
+    }
+    function fillColor(){
+        percent1 = ((sliderOne.value - 3000) / sliderMaxValue) * 100;
+        percent2 = ((sliderTwo.value) / sliderMaxValue) * 100 + 10;
+        sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #38D3E8 ${percent1}% , #38D3E8 ${percent2}%, #dadae5 ${percent2}%)`;
+    }
 
 } else {
     
@@ -113,46 +170,47 @@ if (window.screen.width <= 415) {
     item1.bildItem();
     item24.bildItem();
     item3.bildItem();
-}
 
-
-window.onload = function(){
-    slideOne();
-    slideTwo();
+    window.onload = function(){
+        slideOne();
+        slideTwo();
+        
+        displayValOne.style.position = "absolute";
+        displayValTwo.style.position = "absolute";
+        displayValOne.style.left = `${-10}px`;
+    }
     
-    displayValOne.style.position = "absolute";
-    displayValTwo.style.position = "absolute";
-    displayValOne.style.left = `${-10}px`;
-}
-
-var startPosOne = 0;
-
-let sliderOne = document.getElementById("slider-1");
-let sliderTwo = document.getElementById("slider-2");
-let displayValOne = document.getElementById("range1");
-let displayValTwo = document.getElementById("range2");
-let minGap = 0;
-let sliderTrack = document.querySelector(".slider-track");
-let sliderMaxValue = document.getElementById("slider-1").max;
-
-function slideOne(){
-    if(parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap){
-        sliderOne.value = parseInt(sliderTwo.value) - minGap;
+    var startPosOne = 0;
+    
+    let sliderOne = document.getElementById("slider-1");
+    let sliderTwo = document.getElementById("slider-2");
+    let displayValOne = document.getElementById("range1");
+    let displayValTwo = document.getElementById("range2");
+    let minGap = 0;
+    let sliderTrack = document.querySelector(".slider-track");
+    let sliderMaxValue = document.getElementById("slider-1").max;
+    
+    function slideOne(){
+        if(parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap){
+            sliderOne.value = parseInt(sliderTwo.value) - minGap;
+        }
+        displayValOne.innerHTML = `${sliderOne.value}₽`;
+        fillColor();
+        displayValOne.style.left = `${sliderOne.value/1000 * 2}px`
     }
-    displayValOne.innerHTML = `${sliderOne.value}₽`;
-    fillColor();
-    displayValOne.style.left = `${sliderOne.value/1000 * 2}px`
-}
-function slideTwo(){
-    if(parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap){
-        sliderTwo.value = parseInt(sliderOne.value) + minGap;
+    function slideTwo(){
+        if(parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap){
+            sliderTwo.value = parseInt(sliderOne.value) + minGap;
+        }
+        displayValTwo.innerHTML = `23 000₽`;
+        fillColor();
+        displayValTwo.style.left= `${sliderTwo.value/1000 * 4.9}px`
     }
-    displayValTwo.innerHTML = `23 000₽`;
-    fillColor();
-    displayValTwo.style.left= `${sliderTwo.value/1000 * 4.9}px`
+    function fillColor(){
+        percent1 = ((sliderOne.value - 3000) / sliderMaxValue) * 100;
+        percent2 = ((sliderTwo.value - 1500) / sliderMaxValue) * 100;
+        sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #38D3E8 ${percent1}% , #38D3E8 ${percent2}%, #dadae5 ${percent2}%)`;
+    }
 }
-function fillColor(){
-    percent1 = ((sliderOne.value - 3000) / sliderMaxValue) * 100;
-    percent2 = ((sliderTwo.value - 1500) / sliderMaxValue) * 100;
-    sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #38D3E8 ${percent1}% , #38D3E8 ${percent2}%, #dadae5 ${percent2}%)`;
-}
+
+

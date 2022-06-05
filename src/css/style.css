@@ -500,7 +500,7 @@ main {
 .container{
     position: relative;
     width: 295px;
-    height: 100px;
+    height: 41px;
 }
 input[type="range"]{
     -webkit-appearance: none;
@@ -1061,6 +1061,20 @@ footer {
     display: none;
 }
 
+.filter-footer {
+    margin-top: 39px;
+    display: none;
+    height: 115px;
+    background: #FBFBFB;
+}
+
+.filter-color input:checked + label::after {
+    content:  url(../img/icons/littleCross.png);
+    position: absolute;
+    top: 0px;
+    right: -24px;
+}
+
 @media screen and (max-width: 415px) {
     body {
         width: auto;
@@ -1347,11 +1361,13 @@ footer {
         display: none;
         position: absolute;
         top: 0;
+        right: 0;
+        bottom: 0;
         left: 0;
-        margin: auto;
-        width: 100%;
         z-index: 999;
-        height:auto;
+        width: auto;
+        -webkit-overflow-scrolling: touch;
+        height: 100%;
     }
 
     .filter-text p:last-child {
@@ -1361,11 +1377,109 @@ footer {
     .filter-text{
         margin-top: 61px;
         margin-left: 23.28px;
+        margin-bottom: 47px;
     }
 
     .filter-text p {
-        
+     margin: 0;   
+     font-size: 25px;
+    line-height: 32px;
     }
+
+    .filter-text::after {
+        content: none;
+    }
+
+    .filter-category {
+        margin: 0;
+        margin-left: 20px;
+    }
+
+    .filter-category p::after {
+        left: 381.44px;
+        top: 135px;
+    }
+
+    .filter-brand {
+        margin-left: 20px;
+    }
+
+    .filter-brand p::after {
+        left: 381.44px;   
+        top: 360px; 
+    }
+
+    .filter-price {
+        margin-left: 20px;
+    }
+
+    .container {
+        height: 35px;
+    }
+
+
+    .filter-sections {
+        margin-left: 20px;
+    }
+
+    .filter-sections p::after {
+        left: 381.44px;   
+    }
+
+    .filter-distance {
+        margin-left: 20px;
+    }
+
+    .filter-distance p::after {
+        left: 381.44px;   
+    }
+
+    .filter-squere {
+        margin-left: 20px;
+    }
+
+    .filter-squere p::after {
+        left: 381.44px;   
+    }
+
+    .filter-color {
+        margin-left: 20px;
+    }
+
+    .filter-color p::after {
+        left: 381.44px;  
+    }
+
+    .filter-category label::before, .filter-brand label::before, .filter-sections label::before, .filter-distance label::before, .filter-squere label::before {
+        position: absolute;
+        content: '';
+        width: 16px;
+        height: 16px;
+        background: #fff;
+        top: -1px;
+        left: -40px;
+    }
+
+    .filter-color input {
+        position: absolute;
+        opacity: 1;
+        cursor: pointer;
+        height: 0px;
+        width: 0px;
+        z-index: -1;
+    }
+    
+    .filter-color label::before {
+        position: absolute;
+        content: '';
+        width: 10px;
+        height: 10px;
+        top: 3px;
+        left: -40px;
+        border-radius: 50%
+    }
+    
+
 
     .items {
         width: 415px;
@@ -1683,5 +1797,78 @@ footer {
         position: absolute;
         left: 17px;
         top: 526px;
+    }
+
+    .btn-more-info-footer {
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        margin-left: 22px;
+        margin-top: 28px;
+        width: 203px;
+        height: 54px;
+        border-radius: 2px;
+        background: #38D3E8;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 23px;
+        letter-spacing: 0.02em;
+    }
+    
+    .btn-more-info-footer button{
+        /* margin-left: 128px; */
+        width: 203px;
+        height: 54px;
+        border-radius: 2px;
+        background: #38D3E8;
+        color: #FFFFFF;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0.02em;
+    }
+    
+    .btn-more-info-footer::before {
+        position: absolute;
+        content: url(../img/icons/mobile/arrowWhite.png);
+        top: 15px;
+        left: 28px;
+        z-index: 10;
+    }
+    
+    .btn-more-info-footer button p{
+        position: absolute;
+        top: 16.81px;
+        left: 68.71px;
+    }
+
+    .btn-delete-changes {
+        display: block;
+        width: 77px;
+        height: 20px;
+        margin-top: 45px;
+        margin-left: 40px;
+    }
+
+    .btn-delete-changes p {
+        display: inline-block;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        color: #7E838C;
+    }
+    .btn-delete-changes p::after {
+        content: url(../img/icons/mobile/littleCross.png);
+        display: inline;
+        float: right;
+        margin-top: -18px;
+        margin-left: 82px;
+    }
+
+    .filter-color input:checked + label::after {
+        content:  url(../img/icons/littleCross.png);
+        position: absolute;
+        top: 0px;
+        right: -24px;
     }
 }
